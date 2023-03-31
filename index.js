@@ -8,7 +8,8 @@ server.use(express.static(__dirname + '/public'));
 
 server.set('view engine', 'pug');
 
-server.get('/', (_ , res) => {
+server.get('/', (req , res) => {
+  console.log('Visitor IP: ', req.ip)
   res.render('pages/home');
 });
 
