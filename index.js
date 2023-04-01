@@ -9,7 +9,8 @@ server.use(express.static(__dirname + '/public'));
 server.set('view engine', 'pug');
 
 server.get('/', (req , res) => {
-  console.log('Visitor IP: ', req.ip)
+  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+  console.log('Visitor IP: ', ip)
   res.render('pages/home');
 });
 
